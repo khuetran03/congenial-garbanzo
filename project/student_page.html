@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Học Sinh - Rikkei Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./src/styles/student_page.css">
+</head>
+<!-- Header -->
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="https://cdn.nhanlucnganhluat.vn/uploads/images/E6DA73BF/logo/2022-05/logoRikkeisoft.png"
+                    alt="Logo Học Viện" />
+            </div>
+            <h1>HỆ THỐNG QUẢN LÍ SINH VIÊN RIKKEI</h1>
+            <button class="logout-btn" onclick="showLogoutModal()">Đăng Xuất</button>
+        </header>
+        <!-- Navbar -->
+        <nav class="navbar">
+            <ul>
+                <li><a href="#"><i class="fas fa-tachometer-alt"></i> <button onclick="openhomepage()">Bảng Điều
+                            Khiển</button></a></li>
+                <li><a href="#" class="active"><i class="fas fa-book"></i> <button onclick="opencoursepage()"> Quản Lí
+                            Khóa Học</button></a></li>
+                <li><a href="#"><i class="fas fa-chalkboard-teacher"></i> <button onclick="openclasspage()">Quản Lí Lớp
+                            Học</button></a></li>
+                <li><a href="#"><i class="fas fa-user-graduate"></i><button onclick="openstudentpage()">Quản Lí Sinh
+                            Viên</button> </a></li>
+                <li><a href="#"><i class="fas fa-user"></i><button onclick="openaccountpage()">Quản Lí Tài
+                            Khoản</button> </a></li>
+            </ul>
+        </nav>
+
+        <main class="main">
+            <h3 style="padding-bottom: 20px;">QUẢN LÍ HỌC SINH</h3>
+            <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+                <button class="btn btn-primary" id="add-btn" onclick="showAddModal()" style="
+                width: 104px;
+                height: 34px;
+                margin-bottom: 10px;
+                background-color: #47aa47;">Thêm mới</button>
+                <input style="width: 604px;height: 34px;margin-left: 150px;margin-right: 150px;" type="text"
+                    class="form-control" id="searchInput" placeholder="Nhập từ khóa học tìm kiếm"
+                    onkeyup="searchCourses()" />
+                <button class="btn btn-secondary style=" margin-bottom: 10px; onclick="sortCourses()"
+                    style="margin-bottom: 10px;height: 34px;">Sắp xếp</button>
+                <i class="fa-solid fa-arrows-rotate" title="Refresh" onclick="refreshCourses()"></i>
+            </div>
+            <header class="d-flex justify-content-between mb-3">
+                <table class="table table-bordered table-hover table-striped">
+                    <thead id="thead1">
+                        <tr>
+                            <th>STT</th>
+                            <th>Mã SV</th>
+                            <th>Tên SV</th>
+                            <th>Năm sinh</th>
+                            <th>Địa chỉ</th>
+                            <th>Email</th>
+                            <th>Số điện thoại</th>
+                            <th>khóa học</th>
+                            <th colspan="2">Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                        <!-- Dữ liệu sẽ được hiển thị ở đây -->
+                    </tbody>
+                </table>
+        </main>
+        <ul class="pagination" id="pagination">
+            <li class="page-item">
+                <a class="page-link" href="#">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            <!-- Phân trang sẽ được hiển thị ở đây -->
+        </ul>
+        <footer>
+            <p>Copyright Rikkei Academy @2023</p>
+        </footer>
+    </div>
+    <!-- Modal loggout -->
+    <div id="logoutModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLogoutModal()">&times;</span>
+            <h2>Bạn chắc chắn muốn đăng xuất tài khoản này?</h2>
+            <button onclick="confirmLogout()" style="width: 104px; height: 24px;">Đăng Xuất</button>
+            <button onclick="closeLogoutModal()" style="width: 44px; height: 24px;">Hủy</button>
+        </div>
+        <!-- Nút Thêm mới -->
+        <button onclick="showAddModal()">Thêm mới</button>
+        <script src="./src/scripts/studentpage.js"></script>
+    </div>
+</body>
+</html>

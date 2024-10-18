@@ -1,0 +1,62 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f4f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+form {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 600px;
+    padding-left: 150px;
+    padding-right: 300px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+label {
+    margin-right:60px;
+    color: #555;
+    width: 500px; /* Điều chỉnh chiều rộng của label */
+    text-align: left; /* Căn phải cho label */
+}
+input[type="email"], input[type="password"] {
+    padding: 10px;
+    padding-right: 200px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border 0.3s;
+    flex-grow: 1; /* Cho phép ô input chiếm không gian còn lại */
+}
+input[type="email"]:focus, input[type="password"]:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+button {
+    width: 220px;
+    padding: 10px;
+    background-color: #0fac1c;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+    float: right;
+}
+button:hover {
+    background-color: #10c935;
+}

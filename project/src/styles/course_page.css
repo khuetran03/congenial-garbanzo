@@ -1,0 +1,253 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #e3e5e6;
+    color: rgb(5, 5, 5);
+}
+
+header h1 {
+    flex: 1;
+    text-align: center;
+}
+
+header .logo img {
+    height: 50px;
+}
+
+.logout-btn {
+    background: #cdc9c9;
+    color: rgb(13, 12, 12);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.navbar {
+  background-color: #333; /* Dark background */
+  padding: 10px 0; /* Padding for the navbar */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow effect */
+}
+
+.navbar ul {
+  list-style: none; /* Remove bullets */
+  display: flex; /* Flexbox for horizontal layout */
+  justify-content: space-around; /* Space between items */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+}
+
+.navbar li {
+  flex: 1; /* Equal space for each item */
+  text-align: center; /* Center text */
+}
+
+.navbar a {
+  text-decoration: none; /* Remove underline from links */
+  color: white; /* White text */
+  transition: background-color 0.3s; /* Smooth background transition */
+}
+
+.navbar a:hover {
+  background-color: #555; /* Change background on hover */
+}
+
+.navbar .active a {
+  background-color: #47aa47; /* Highlight active link */
+  color: white; /* Ensure text remains white */
+}
+
+.navbar button {
+  background: none; /* No background */
+  border: none; /* No border */
+  color: white; /* White text */
+  font: inherit; /* Inherit font styles */
+  cursor: pointer; /* Pointer cursor */
+}
+
+.navbar button:hover {
+  color: #47aa47; /* Change text color on hover */
+}
+
+main {
+    margin: 20px 0;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #343a40;
+    color: white;
+    margin-top: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #dee2e6;
+}
+
+.table th {
+    background-color: #007bff;
+    color: rgb(0, 0, 0);
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f2f2f2;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+.pagination {
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination li {
+    margin: 0 5px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+}
+
+.pagination li.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0, 0, 0, 0.4); 
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; 
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; 
+  text-align: center;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.form-group label {
+  flex: 1;
+  margin-right: 10px; 
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"] {
+  flex: 2; 
+  padding: 10px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button {
+    padding: 4px 12px;
+    line-height: 30px;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.button-edit {
+    background-color: rgb(28, 126, 224);
+    cursor: pointer;
+}
+
+.button-edit:hover {
+    background: rgb(38, 160, 212);
+}
+
+.button-delete {
+    background-color: rgb(233, 86, 1);
+    cursor: pointer;
+}
+
+.button-delete:hover {
+    background: rgb(233, 107, 107);
+}
+
+.fa-arrows-rotate {
+    font-size: 20px;
+    cursor: pointer;
+    color: gray;
+}
+
+.fa-arrows-rotate:hover {
+    color: rgb(184, 180, 180);
+    transform: rotate(20deg);
+    transition: all 0.5s linear;
+}

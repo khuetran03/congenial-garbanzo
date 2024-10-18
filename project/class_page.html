@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Học Sinh - Rikkei Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./src/styles/class_page.css">
+</head>
+<!-- Header -->
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="https://cdn.nhanlucnganhluat.vn/uploads/images/E6DA73BF/logo/2022-05/logoRikkeisoft.png"
+                    alt="Logo Học Viện" />
+            </div>
+            <h1>HỆ THỐNG QUẢN LÍ SINH VIÊN RIKKEI</h1>
+            <button class="logout-btn" onclick="showLogoutModal()">Đăng Xuất</button>
+        </header>
+        <!-- Navbar -->
+        <nav class="navbar">
+            <ul>
+                <li><a href="#"><i class="fas fa-tachometer-alt"></i> <button onclick="openhomepage()">Bảng Điều
+                            Khiển</button></a></li>
+                <li><a href="#" class="active"><i class="fas fa-book"></i> <button onclick="opencoursepage()"> Quản Lí
+                            Khóa Học</button></a></li>
+                <li><a href="#"><i class="fas fa-chalkboard-teacher"></i> <button onclick="openclasspage()">Quản Lí Lớp
+                            Học</button></a></li>
+                <li><a href="#"><i class="fas fa-user-graduate"></i><button onclick="openstudentpage()">Quản Lí Sinh
+                            Viên</button> </a></li>
+                <li><a href="#"><i class="fas fa-user"></i><button onclick="openaccountpage()">Quản Lí Tài
+                            Khoản</button> </a></li>
+            </ul>
+        </nav>
+        <main class="main">
+            <h3 style="padding-bottom: 20px;">QUẢN LÍ LỚP HỌC</h3>
+            <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+                <button class="btn btn-primary" id="add-btn" onclick="showAddModal()" style="
+                    width: 104px;
+                    height: 34px;
+                    margin-bottom: 10px;
+                    background-color: #47aa47;">Thêm mới</button>
+                <input style="width: 604px;height: 34px;margin-left: 150px;margin-right: 150px;" type="text"
+                    class="form-control" id="searchInput" placeholder="Nhập từ khóa học tìm kiếm"
+                    onkeyup="searchCourses()" />
+                <button class="btn btn-secondary style=" margin-bottom: 10px; onclick="sortCourses()"
+                    style="margin-bottom: 10px;height: 34px;">Sắp xếp</button>
+                <i class="fa-solid fa-arrows-rotate" title="Refresh" onclick="refreshCourses()"></i>
+            </div>
+            <header class="d-flex justify-content-between mb-3">
+
+                <table class="table table-bordered table-hover table-striped">
+                    <thead id="thead1">
+                        <tr>
+                            <th>STT</th>
+                            <th>Mã lớp</th>
+                            <th>Tên lớp</th>
+                            <th>Giảng viên</th>
+                            <th>Mô tả</th>
+                            <th>Sĩ số</th>
+                            <th>Trạng thái</th>
+                            <th>khóa học</th>
+                            <th colspan="2">Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                        <!-- Dữ liệu sẽ được hiển thị ở đây -->
+                    </tbody>
+                </table>
+        </main>
+        <ul class="pagination" id="pagination">
+            <li class="page-item">
+                <a class="page-link" href="#">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            <!-- Phân trang sẽ được hiển thị ở đây -->
+        </ul>
+        <footer>
+            <p>Copyright Rikkei Academy @2023</p>
+        </footer>
+    </div>
+    <!-- Modal loggout -->
+    <div id="logoutModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLogoutModal()">&times;</span>
+            <h2>Bạn chắc chắn muốn đăng xuất tài khoản này?</h2>
+            <button onclick="confirmLogout()" style="width: 104px; height: 24px;">Đăng Xuất</button>
+            <button onclick="closeLogoutModal()" style="width: 44px; height: 24px;">Hủy</button>
+        </div>
+        <!-- Nút Thêm mới -->
+        <button onclick="showAddModal()">Thêm mới</button>
+
+        <!-- Modal thêm mới -->
+        <div id="addModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeAddModal()">&times;</span>
+                <h2>Thêm mới lớp học</h2>
+
+                <div class="form-group">
+                    <label for="addCourseCode">Mã lớp học <span style="color: red;">(*)</span></label>
+                    <input type="text" id="addCourseCode" placeholder="Nhập mã lớp học" />
+                </div>
+
+                <div class="form-group">
+                    <label for="addCourseName">Tên lớp học <span style="color: red;">(*)</span></label>
+                    <input type="text" id="addCourseName" placeholder="Nhập tên lớp học" />
+                </div>
+
+                <div class="form-group">
+                    <label for="addTeacherName">Giảng viên <span style="color: red;">(*)</span></label>
+                    <input type="text" id="addTeacherName" placeholder="Nhập tên giảng viên" />
+                </div>
+
+                <div class="form-group">
+                    <label for="addNoS">Sĩ số <span style="color: red;">(*)</span></label>
+                    <input type="number" id="addNoS" placeholder="Nhập sĩ số lớp học" />
+                </div>
+
+                <div class="form-group">
+                    <label for="addDescription">Mô tả</label>
+                    <input type="text" id="addDescription" placeholder="Nhập mô tả lớp học" />
+                </div>
+
+                <div class="form-group">
+                    <label for="addStatus">Trạng thái <span style="color: red;">(*)</span></label>
+                    <select id="addStatus">
+                        <option value="Chờ lớp">Chờ lớp</option>
+                        <option value="Hoạt động">Hoạt động</option>
+                        <option value="Kết thúc">Kết thúc</option>
+                    </select>
+                </div>
+
+                <button onclick="addNewCourse()" style="margin-left: 280px;width: 104px;height: 24px;">Thêm mới</button>
+                <button onclick="closeAddModal()" style="width: 69px; height: 24px;">Đóng</button>
+            </div>
+        </div>
+
+        <!-- Modal sửa -->
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeEditModal()">&times;</span>
+                <h2>Sửa khóa học</h2>
+
+                <!-- Mã khóa học -->
+                <div class="form-group">
+                    <label for="editCourseCode">Mã khóa học <span style="color: red;">(*)</span></label>
+                    <input type="text" id="editCourseCode" />
+                </div>
+
+                <!-- Tên khóa học -->
+                <div class="form-group">
+                    <label for="editCourseName">Tên khóa học <span style="color: red;">(*)</span></label>
+                    <input type="text" id="editCourseName" />
+                </div>
+
+                <!-- Giảng viên -->
+                <div class="form-group">
+                    <label for="editTeacherName">Giảng viên <span style="color: red;">(*)</span></label>
+                    <input type="text" id="editTeacherName" />
+                </div>
+
+                <!-- Sĩ số -->
+                <div class="form-group">
+                    <label for="editNoS">Sĩ số <span style="color: red;">(*)</span></label>
+                    <input type="number" id="editNoS" />
+                </div>
+                <!-- Mô tả -->
+                <div class="form-group">
+                    <label for="editDescription">Mô tả</label>
+                    <textarea id="editDescription"></textarea>
+                </div>
+
+                <!-- Trạng thái -->
+                <div class="form-group">
+                    <label>Trạng thái <span style="color: red;">(*)</span></label>
+                    <select id="editStatus">
+                        <option value="chờ lớp">Chờ lớp</option>
+                        <option value="hoạt động">Hoạt động</option>
+                        <option value="kết thúc">Kết thúc</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <button onclick="updateCourse()" style="margin-left: 280px;width: 104px;height: 24px;">Cập nhật</button>
+        <button onclick="closeEditModal()" style="width: 69px; height: 24px;">Đóng</button><!--  -->
+    </div>
+    <!-- Modal delete -->
+    </div>
+    <div id="deleteModal" class="modal">
+
+        <div class="modal-content">
+            <span class="close" onclick="closeDeleteModal()">&times;</span>
+            <h2>Bạn có chắc chắn muốn xóa khóa học này?</h2>
+            <div class="modal-actions">
+                <button onclick="confirmDelete()" style="width: 104px; height: 24px;">Có</button>
+                <button onclick="closeDeleteModal()" style="width: 69px; height: 24px;">Không</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./src/scripts/classpage.js"></script>
+</body>
+
+</html>
